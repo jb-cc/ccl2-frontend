@@ -26,11 +26,12 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .app-background {
   background-image: url('./assets/img/Background.svg');
   background-size: cover;
   background-position: center;
+  min-height: 100vh;
 }
 </style>
 
