@@ -1,5 +1,5 @@
 <template>
-  <div id="App">
+  <div id="App" class="app-background">
   <header>
     <nav>
     <NavbarDefault /> <!-- Use the navbar component -->
@@ -26,5 +26,11 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+.app-background {
+  background-image: url('./assets/img/Background.svg');
+  background-size: cover;
+  background-position: center;
+}
 </style>
+
