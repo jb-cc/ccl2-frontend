@@ -1,14 +1,30 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
+  <div id="App">
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <nav>
+    <NavbarDefault /> <!-- Use the navbar component -->
+    </nav>
   </header>
 
   <RouterView />
+  </div>
 </template>
+
+
+
+
+<script>
+import NavbarDefault from './components/NavbarDefault.vue';
+ // Import the navbar component
+
+export default {
+  components: {
+    NavbarDefault, // Register the navbar component locally
+  },
+  // Rest of the component options...
+}
+</script>
+
 
 <style scoped>
 </style>
