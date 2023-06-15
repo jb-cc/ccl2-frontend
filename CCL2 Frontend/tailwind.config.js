@@ -34,6 +34,8 @@ module.exports = {
                 'ccl2-Blood-Red-70': 'rgba(65, 1, 34, 0.7)',
                 'ccl2-Red-Darker-70': 'rgba(147, 50, 78, 0.7)',
                 'ccl2-Red-70': 'rgba(229, 68, 81, 0.7)',
+                'ccl2-Light-Blue-40': 'rgba(84, 117, 252, 0.4)',
+                'ccl2-Light-Red-40': 'rgba(229, 68, 81, 0.4)',
 
             },
             fontFamily: {

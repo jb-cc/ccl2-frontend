@@ -34,7 +34,6 @@ const routes = [    // you can't access anything in here if not logged in
     },
 
 
-
 ]
 
 export default routes

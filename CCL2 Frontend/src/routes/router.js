@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import indexRoutes from './indexRoutes';
 import marketRoutes from "./marketRoutes";
 import userRoutes from "./userRoutes";

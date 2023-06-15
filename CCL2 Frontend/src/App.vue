@@ -1,21 +1,19 @@
 <template>
   <div id="App" class="app-background">
-  <header>
-    <nav>
-    <NavbarDefault /> <!-- Use the navbar component -->
-    </nav>
-  </header>
+    <header>
+      <nav>
+        <NavbarDefault/> <!-- Use the navbar component -->
+      </nav>
+    </header>
 
-  <RouterView />
+    <RouterView/>
   </div>
 </template>
 
 
-
-
 <script>
 import NavbarDefault from './components/NavbarDefault.vue';
- // Import the navbar component
+// Import the navbar component
 
 export default {
   components: {
