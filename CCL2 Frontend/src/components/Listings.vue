@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen py-2">
-    <div class="text-7xl text-center mb-20 font-Moondance text-ccl2-White">Latest Skins</div>
+    <div class="text-7xl text-center mb-20 font-Moondance text-ccl2-White">{{ headline }}</div>
     <div v-if="items.length" class="w-3/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
       <div
           v-for="item in items"
@@ -40,15 +40,18 @@ export default {
   data() {
     return {
       items: [],
+      headline: 'Latest Skins',
     };
   },
   created() {
     const team = this.$route.params.team;
     if (team) {
+      this.headline = `${team}-SIDE WEAPONS`;
       http.get(`http://localhost:8080/listings/${team}`).then((response) => {
         this.items = response.data;
       });
     } else {
+      this.headline = 'Latest Skins';
       http.get('http://localhost:8080/listings').then((response) => {
         this.items = response.data;
       });
