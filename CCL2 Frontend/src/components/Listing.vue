@@ -7,20 +7,33 @@
       <img
         :src="getImage(item)"
         alt="Skin Image"
-        class="w-full h-auto object-contain"
+        class="w-1/2 h-auto object-contain mx-auto my-4"
       />
       <h1 class="font-bold text-center text-ccl2-White my-4">
         {{ item.name }}
       </h1>
-      <p class="text-center text-ccl2-White">
-        <i class="fas fa-dollar-sign"></i> {{ item.price }}
+      <p class="text-center text-ccl2-White mb-4">
+        {{ item.rarity}}
       </p>
-      <button
-        class="mt-4 inline-block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
-        @click="buyItem"
-      >
-        BUY NOW
-      </button>
+      <div class="pb-2 text-center">
+        <img
+            src="/img/icons/coin.svg"
+            alt="Coin Icon"
+            class="inline-block mr-2"
+        />
+        <h2 class="font-bold text-ccl2-White inline-block">
+          {{ item.price }}
+        </h2>
+      </div>
+
+      <div class="text-center">
+        <button
+          class="mt-4 inline-block w-1/2 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
+          @click="buyItem"
+        >
+          BUY NOW
+        </button>
+      </div>
     </div>
     <div v-else class="text-ccl2-White mt-20">
       <p>Fetching item...</p>
