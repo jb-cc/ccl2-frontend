@@ -41,7 +41,7 @@
           </h2>
         </div>
         <router-link
-          :to="`/listings/item/${item.sellerWeaponID}/buy`"
+          :to="`/listings/item/${item.sellerWeaponID}`"
           class="mt-0.5 inline-block w-full px-6 py-2 text-xl font-bold leading-6 text-center text-black uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-ccl2-Dark-Gold focus:outline-none"
         >
           BUY
@@ -73,6 +73,7 @@ export default {
       http
         .get(`http://localhost:8080/listings/${team}`)
         .then((response) => {
+          console.log(response.data)
           this.items = response.data;
         })
         .catch((e) => {
@@ -84,6 +85,7 @@ export default {
       http
         .get("http://localhost:8080/listings")
         .then((response) => {
+          console.log(response.data)
           this.items = response.data;
         })
         .catch((e) => {

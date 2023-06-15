@@ -14,7 +14,7 @@ const routes = [
     {
         path: '/listings/item/:item', // item here is the userWeaponID, to return a specific unique listing item
         name: 'Listing',
-        component: () => import('../components/Listing.vue')
+        component: () => import('../components/Listing.vue')    // shows a listing with all the info, and link to buy
     },
     {
         path: '/listings/item/:item/buy',   // you can't do this when not logged in
