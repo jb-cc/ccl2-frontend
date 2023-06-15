@@ -9,16 +9,16 @@
       >
         <img :src="getImage(item)" alt="Skin Image" class="w-full h-auto object-contain">
 
-        <div class="p-4 text-center flex-grow">
+        <div class="p-2 text-center flex-grow">
           <h2 class="font-bold mb-2 text-ccl2-White">{{ item.name }}</h2>
         </div>
-        <div class="p-4 text-center">
+        <div class="pb-2 text-center">
           <img src="/img/icons/coin.svg" alt="Coin Icon" class="inline-block mr-2">
           <h2 class="font-bold text-ccl2-White inline-block"><i class="fas fa-dollar-sign"></i> {{ item.price }}</h2>
         </div>
         <router-link
             :to="`/listings/item/${item.sellerWeaponID}/buy`"
-            class="mt-0.5 inline-block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
+            class="mt-0.5 inline-block w-full px-6 py-2 text-xl font-bold leading-6 text-center text-black uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-ccl2-Dark-Gold focus:outline-none"
         >
           BUY
         </router-link>
@@ -43,14 +43,16 @@ export default {
     };
   },
   created() {
-    http.get('http://localhost:8080/listings')
-        .then((response) => {
-          console.log("Listings data:", response.data);
-          this.items = response.data;
-        })
-        .catch((error) => {
-          console.error("Error fetching listings:", error);
-        });
+    const team = this.$route.params.team;
+    if (team) {
+      http.get(`http://localhost:8080/listings/${team}`).then((response) => {
+        this.items = response.data;
+      });
+    } else {
+      http.get('http://localhost:8080/listings').then((response) => {
+        this.items = response.data;
+      });
+    }
   },
 
   methods: {
