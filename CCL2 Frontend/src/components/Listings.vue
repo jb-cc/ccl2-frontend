@@ -1,24 +1,37 @@
 <template>
-  <div>
-    <div><h1>Latest Skins</h1></div>
-    <div v-if="items.length" class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <router-link
+  <div class="flex flex-col items-center justify-center min-h-screen py-2">
+    <div class="text-7xl text-center mb-20 font-Moondance text-ccl2-White">Latest Skins</div>
+    <div v-if="items.length" class="w-3/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+      <div
           v-for="item in items"
           :key="item.id"
-          :to="`/listings/item/${item.sellerWeaponID}`"
-          class="block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden"
+          class="flex flex-col bg-ccl2-Dark-Blue shadow-md hover:shadow-xl"
       >
-        <div class="p-4">
-          <h2 class="font-bold">Seller ID: {{ item.sellerID }}</h2>
-          <p>Price: {{ item.price }}</p>
+        <img :src="getImage(item)" alt="Skin Image" class="w-full h-auto object-contain">
+
+        <div class="p-4 text-center flex-grow">
+          <h2 class="font-bold mb-2 text-ccl2-White">{{ item.name }}</h2>
         </div>
-      </router-link>
+        <div class="p-4 text-center">
+          <img src="/img/icons/coin.svg" alt="Coin Icon" class="inline-block mr-2">
+          <h2 class="font-bold text-ccl2-White inline-block"><i class="fas fa-dollar-sign"></i> {{ item.price }}</h2>
+        </div>
+        <router-link
+            :to="`/listings/item/${item.sellerWeaponID}/buy`"
+            class="mt-0.5 inline-block w-full px-6 py-2 text-xs font-medium leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
+        >
+          BUY
+        </router-link>
+      </div>
     </div>
     <div v-else class="text-ccl2-White mt-20">
       <p>Currently, there are no items listed. Check back later!</p>
     </div>
   </div>
 </template>
+
+
+
 
 <script>
 import http from '../http-common';
@@ -30,9 +43,22 @@ export default {
     };
   },
   created() {
-    http.get('http://localhost:8080/listings').then((response) => {
-      this.items = response.data;
-    });
+    http.get('http://localhost:8080/listings')
+        .then((response) => {
+          console.log("Listings data:", response.data);
+          this.items = response.data;
+        })
+        .catch((error) => {
+          console.error("Error fetching listings:", error);
+        });
+  },
+
+  methods: {
+    getImage(item) {
+      return `/img/skins/${item.image}.png`;
+    },
+
   },
 };
+
 </script>

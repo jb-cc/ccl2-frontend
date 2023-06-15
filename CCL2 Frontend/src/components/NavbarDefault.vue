@@ -12,7 +12,7 @@
     </div>
     <div class="flex items-center space-x-8 mr-4">
       <router-link class="mx-2 font-poppins font-normal text-xl text-white" to="/login">LOGIN</router-link>
-      <router-link class="mx-2 py-2 px-3 bg-ccl2-White text-ccl2-Midnight-Blue font-Poppins border border-white text-xl font-normal" to="/register">REGISTER</router-link>
+      <router-link class="mx-2 py-2 px-3 bg-ccl2-White text-ccl2-Midnight-Blue font-Poppins border border-white text-xl font-semibold" to="/register">REGISTER</router-link>
     </div>
   </div>
 
