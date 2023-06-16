@@ -71,30 +71,24 @@ export default {
   },
   created() {
     const team = this.$route.params.team;
+    const fetchItems = (path) => {
+      http
+          .get(path, { withCredentials: true })
+          .then((response) => {
+            console.log(response.data);
+            this.items = response.data;
+          })
+          .catch((e) => {
+            this.FetchingError = e.message;
+            console.log(e);
+          });
+    };
     if (team) {
       this.headline = `${team}-SIDE WEAPONS`;
-      http
-        .get(`http://localhost:8080/listings/${team}`)
-        .then((response) => {
-          console.log(response.data);
-          this.items = response.data;
-        })
-        .catch((e) => {
-          this.FetchingError = e.message;
-          console.log(e);
-        });
+      fetchItems(`http://localhost:8080/listings/${team}`);
     } else {
       this.headline = "Latest Skins";
-      http
-        .get("http://localhost:8080/listings")
-        .then((response) => {
-          console.log(response.data);
-          this.items = response.data;
-        })
-        .catch((e) => {
-          this.FetchingError = e.message;
-          console.log(e);
-        });
+      fetchItems("http://localhost:8080/listings");
     }
   },
 
