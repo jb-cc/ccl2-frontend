@@ -73,7 +73,7 @@ export default {
     const team = this.$route.params.team;
     const fetchItems = (path) => {
       http
-          .get(path, { withCredentials: true })
+          .get(path)
           .then((response) => {
             console.log(response.data);
             this.items = response.data;

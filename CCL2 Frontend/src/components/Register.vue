@@ -55,6 +55,7 @@ export default {
             if (response.data.message === 'User registered successfully') {
               this.$router.push({ path: `/user/${response.data.user.id}` });
 
+
             }
           })
           .catch(e => {
