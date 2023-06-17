@@ -52,7 +52,7 @@ export default {
           .then(response => {
             console.log('response data: '+ JSON.stringify(response.data.user));
             // If user registration is successful, navigate to the user page.
-            if (response.data.message === 'User registered successfully') {
+            if (response.data.token) {
               this.$router.push({ path: `/user/${response.data.user.id}` });
 
 

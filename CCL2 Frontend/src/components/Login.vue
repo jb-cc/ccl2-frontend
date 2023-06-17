@@ -44,7 +44,7 @@ export default {
           .then(response => {
             console.log('response data: '+ JSON.stringify(response.data));
             // If user login is successful, navigate to the user profile page.
-            if (response.data.message === 'User login successful') {
+            if (response.data.token) {
 
               console.log('user id: '+response.data.user.id);
               this.$router.push({ path: `/user/${response.data.user.id}` });

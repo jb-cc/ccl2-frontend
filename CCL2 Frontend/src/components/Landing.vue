@@ -4,7 +4,7 @@
       <h1 class="text-[13vw] md:text-6xl lg:text-[12.75rem] leading-none font-Moondance text-ccl2-White">Skinfinity</h1>
       <h2 class="text-[3.4375rem] leading-none font-Poppins text-ccl2-Gold font-bold">CSGO trading and more</h2>
     </div>
-    <div class="bg-ccl2-Dark-Blue-70 w-3/5 h-80 flex items-center justify-center flex-col space-y-4 mt-20">
+    <div class="bg-ccl2-Dark-Blue-70 w-3/5 h-1/4 flex items-center justify-center flex-col space-y-4 mt-20 ">
       <h3 class="text-4xl text-ccl2-White">The newest collections for the best prices</h3>
       <router-link to="/listings" class="text-lg text-ccl2-White">SHOP NOW</router-link>
     </div>
