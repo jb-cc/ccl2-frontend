@@ -2,7 +2,7 @@
 import {defineStore} from 'pinia'
 import http from "../http-common";
 
-export const useUserStore = defineStore('user', {
+export const UserStore = defineStore('user', {
     state: () => {
         return {
             isLoggedIn: false,
@@ -46,7 +46,7 @@ export const useUserStore = defineStore('user', {
                 if (response.data.token) {
                     this.isLoggedIn = true;
                     this.user = response.data.user; // Store registered user data
-                    console.log('response.data.user: ' + response.data.user)
+                    console.log('[user.js / register function] response.data.user: ' + response.data.user)
                 }
 
                 return response;

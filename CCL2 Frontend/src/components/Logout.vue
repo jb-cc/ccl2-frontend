@@ -5,11 +5,11 @@
 </template>
 
 <script setup>
-import { useUserStore } from '@/stores/user'
+import { UserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 import {onMounted} from "vue";
 
-const user = useUserStore()
+const user = UserStore()
 const router = useRouter()
 
 onMounted(async () => {

@@ -68,8 +68,7 @@ export default {
       return ""; // return a default image or empty string if item or item.image is not defined
     },
     buyItem() {
-      // Here you can define what happens when the BUY NOW button is clicked.
-      // You probably want to make a POST request to your server to initiate the purchase.
+
     },
   },
 };

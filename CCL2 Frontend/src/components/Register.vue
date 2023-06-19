@@ -33,7 +33,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useUserStore } from '@/stores/user'
+import { UserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 
 // define reactive data
@@ -45,7 +45,7 @@ const password = ref('')
 const router = useRouter()
 
 // define store
-const userStore = useUserStore()
+const userStore = UserStore()
 
 // define methods
 const submitForm = async () => {
@@ -56,14 +56,14 @@ const submitForm = async () => {
       password: password.value
     })
 
-    console.log('response data: ' + JSON.stringify(response.data.user))
+    console.log('[Register.vue / submitForm] response data: ' + JSON.stringify(response.data.user))
 
     // If user registration is successful, navigate to the user page.
     if (response.data.token) {
-      await router.push({path: `/user/${response.data.user.id}`})
+      await router.push({path: `/profile`})
     }
   } catch (e) {
-    console.log('error response: ' + JSON.stringify(e.response))
+    console.log('[Register.vue / submitForm] error response: ' + JSON.stringify(e.response))
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen p-6">
+  <div v-if="user" class="flex flex-col items-center justify-center min-h-screen p-6">
     <h1 class="text-2xl font-bold mb-6 text-center font-Moondance text-6xl text-white">{{ user.username }}</h1>
     <div class="bg-transparent shadow-none px-16 py-10 mb-4 text-white font-Poppins w-1/3">
       <div class="mb-4 flex text-xl justify-between">
@@ -24,45 +24,20 @@
   </div>
 </template>
 
+<script setup>
+import {UserStore} from '@/stores/user'
+import {ref, onMounted} from 'vue'
+import {useRouter} from 'vue-router'
 
+const userStore = UserStore()
+const user = ref(userStore.user)
+const router = useRouter()
 
-
-
-
-
-<script>
-import http from "../http-common";
-
-export default {
-  data() {
-    return {
-      user: {
-        id: '', // Initialize with the correct id
-        username: '', // Initialize with the correct username
-        email: '', // Initialize with the correct email
-        balance: 0 // Initialize with the correct balance
-      }
-    }
-  },
-  methods: {
-    getUserData(userId) {
-      http.get(`http://localhost:8080/users/${userId}`)
-          .then(response => {
-            console.log('response data: '+ JSON.stringify(response));
-            // Assign the fetched user data to the user data property
-            this.user.id = response.data.id;
-            this.user.username = response.data.username;
-            this.user.email = response.data.email;
-            this.user.balance = response.data.balance;
-          })
-          .catch(e => {
-            console.log('error response: '+e);
-          });
-    }
-  },
-  created() {
-    // Fetch the user data when the component is created
-    this.getUserData(this.$route.params.id);
+onMounted(async () => {
+  if (!user.value) {
+    console.log('[In UserStore]: user.value is '+user.value)
+    router.push('/login')
   }
-}
+})
 </script>
+

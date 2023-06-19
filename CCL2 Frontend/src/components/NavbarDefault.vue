@@ -6,7 +6,6 @@
         <router-link class="text-3xl font-Moondance text-ccl2-Gold" to="/">SKINFINITY</router-link>
       </div>
       <div class="navbar__links flex space-x-8">
-        <router-link class="mx-2 font-poppins font-light text-xl text-white" to="/login">INVENTORY</router-link>
         <router-link class="mx-2 font-poppins font-light text-xl text-white" to="/listings">MARKET</router-link>
       </div>
     </div>

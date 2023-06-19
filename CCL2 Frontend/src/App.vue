@@ -12,11 +12,11 @@
 
 
 <script setup>
-import { useUserStore } from './stores/user'
+import { UserStore } from './stores/user'
 import NavbarDefault from './components/NavbarDefault.vue';
 import NavbarLoggedIn from "@/components/NavbarLoggedIn.vue";
 
-const user = useUserStore()
+const user = UserStore()
 </script>
 
 

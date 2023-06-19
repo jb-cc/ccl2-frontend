@@ -51,11 +51,11 @@
 </template>
 
 <script setup>
-import { useUserStore } from "@/stores/user";
+import { UserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
-const user = useUserStore();
+const user = UserStore();
 const router = useRouter();
 const username = ref("");
 const password = ref("");
@@ -63,8 +63,8 @@ const password = ref("");
 const submitForm = async () => {
   await user.logIn({ username: username.value, password: password.value });
   if (user.isLoggedIn) {
-    console.log("user: " + JSON.stringify(user.user));
-    await router.push({ path: `/user/${user.user.id}` });
+    console.log("[Login.vue / submitForm] user from Userstore: " + JSON.stringify(user));
+    await router.push({ path: `/profile` });
   }
 };
 </script>
