@@ -69,7 +69,7 @@ onMounted(async () => {
 
 const sellItem = () => {
   if(item.value && item.value.id) {
-    router.push(`/inventory/${item.value.id}/sell`);
+    router.push(`/inventory/${item.value.userWeaponID}}/sell`);
   } else {
     console.error('No item to sell');
   }

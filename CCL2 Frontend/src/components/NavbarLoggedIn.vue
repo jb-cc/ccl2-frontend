@@ -7,7 +7,7 @@
       </div>
       <div class="navbar__links flex space-x-8">
         <router-link class="mx-2 font-poppins font-light text-xl text-white" to="/listings">MARKET</router-link>
-        <router-link class="mx-2 font-poppins font-light text-xl text-white" to="/login">INVENTORY</router-link>
+        <router-link class="mx-2 font-poppins font-light text-xl text-white" to="/inventory">INVENTORY</router-link>
       </div>
     </div>
     <div class="flex items-center space-x-8 mr-4 relative">
