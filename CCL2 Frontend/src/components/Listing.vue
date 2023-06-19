@@ -54,6 +54,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import http from "../http-common";
 import { UserStore } from "@/stores/user";
+import router from "@/routes/router";
 
 const item = ref({});
 const route = useRoute();
@@ -90,7 +91,7 @@ const getImage = (item) => {
   if (item && item.image) {
     return `/img/skins/${item.image}.png`;
   }
-  return ""; // return a default image or empty string if item or item.image is not defined
+  return ""; // return an empty string if item or item.image is not defined
 };
 
 const buyItem = async () => {
@@ -102,7 +103,9 @@ const buyItem = async () => {
     console.log("Item. " + JSON.stringify(item.value));
     console.log(JSON.stringify(buyingData));
     await http.post(`http://localhost:8080/listings/buy/${buyingData.sellerWeaponID}`, buyingData);
+    user.balance -= item.value.price;
     item.value.isSold = true;
+    await router.push('/inventory')
   } catch (error) {
     console.error(error);
   }

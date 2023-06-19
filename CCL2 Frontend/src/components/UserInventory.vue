@@ -53,7 +53,7 @@ export default {
 
     onMounted(async () => {
       try {
-        const response = await http.get(`http://localhost:8080/inventory/user/${user.id}`);
+        const response = await http.get(`http://localhost:8080/inventory/user/${parseInt(user.id)}`);
         items.value = response.data;
       } catch (error) {
         console.error(error);
