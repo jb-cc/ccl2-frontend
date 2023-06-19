@@ -4,20 +4,16 @@
   </div>
 </template>
 
-<script>
-import http from "../http-common";
+<script setup>
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+import {onMounted} from "vue";
 
-export default {
-  name: "Logout",
-  async created() {
-    try {
-      const response = await http.post("http://localhost:8080/logout");
-      if (response.status === 200) {
-        this.$router.replace("/");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  },
-};
+const user = useUserStore()
+const router = useRouter()
+
+onMounted(async () => {
+  await user.logOut()
+  await router.replace('/')
+})
 </script>

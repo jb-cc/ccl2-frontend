@@ -31,38 +31,39 @@
   </div>
 </template>
 
-<script>
-import http from "../http-common";
+<script setup>
+import { ref } from 'vue'
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
 
-export default {
-  data() {
-    return {
-      username: '',
-      email: '',
-      password: ''
+// define reactive data
+const username = ref('')
+const email = ref('')
+const password = ref('')
+
+// define router
+const router = useRouter()
+
+// define store
+const userStore = useUserStore()
+
+// define methods
+const submitForm = async () => {
+  try {
+    const response = await userStore.register({
+      username: username.value,
+      email: email.value,
+      password: password.value
+    })
+
+    console.log('response data: ' + JSON.stringify(response.data.user))
+
+    // If user registration is successful, navigate to the user page.
+    if (response.data.token) {
+      await router.push({path: `/user/${response.data.user.id}`})
     }
-  },
-  methods: {
-    submitForm() {
-      http.post('http://localhost:8080/register', {
-        username: this.username,
-        email: this.email,
-        password: this.password
-      })
-          .then(response => {
-            console.log('response data: '+ JSON.stringify(response.data.user));
-            // If user registration is successful, navigate to the user page.
-            if (response.data.token) {
-              this.$router.push({ path: `/user/${response.data.user.id}` });
-
-
-            }
-          })
-          .catch(e => {
-            console.log('error response: '+JSON.stringify(e.response));
-          });
-    }
+  } catch (e) {
+    console.log('error response: ' + JSON.stringify(e.response))
   }
-
 }
 </script>

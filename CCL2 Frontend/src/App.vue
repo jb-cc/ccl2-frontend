@@ -2,25 +2,21 @@
   <div id="App" class="app-background">
     <header>
       <nav>
-        <NavbarDefault/> <!-- Use the navbar component -->
+        <NavbarLoggedIn v-if="user.isLoggedIn"/>
+        <NavbarDefault v-else/>
       </nav>
     </header>
-
     <RouterView/>
   </div>
 </template>
 
 
-<script>
+<script setup>
+import { useUserStore } from './stores/user'
 import NavbarDefault from './components/NavbarDefault.vue';
-// Import the navbar component
+import NavbarLoggedIn from "@/components/NavbarLoggedIn.vue";
 
-export default {
-  components: {
-    NavbarDefault, // Register the navbar component locally
-  },
-  // Rest of the component options...
-}
+const user = useUserStore()
 </script>
 
 
