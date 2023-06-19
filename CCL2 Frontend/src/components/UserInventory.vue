@@ -27,7 +27,7 @@
       </div>
     </div>
     <div v-else class="text-ccl2-White font-Poppins mt-20">
-      <p>Currently, there are no items in your inventory. Check back later!</p>
+      <p>Currently, there are no items in your inventory. Check out the Market!</p>
     </div>
   </div>
 </template>

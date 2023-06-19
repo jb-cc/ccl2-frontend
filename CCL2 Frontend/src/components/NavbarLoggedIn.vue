@@ -11,6 +11,11 @@
       </div>
     </div>
     <div class="flex items-center space-x-8 mr-4 relative">
+      <div class="font-Poppins text-xl font-semibold text-ccl2-Gold">{{ user.user.balance }}<img
+          src="/img/icons/coin.svg"
+          alt="Coin Icon"
+          class="inline-block mr-2"
+      /></div>
       <router-link class="mx-2 py-2 px-3 bg-ccl2-White text-ccl2-Midnight-Blue font-Poppins text-xl font-semibold" to="/profile">ACCOUNT</router-link>
       <div class="absolute left-0 top-[100%] mt-0 bg-white ring-1 ring-black ring-opacity-5 transition ease-in-out duration-150" style="width: 125px;">
         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
@@ -24,10 +29,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'NavbarLoggedIn'
-}
+<script setup>
+import { UserStore } from '@/stores/user'
+
+const user = UserStore()
 </script>
 
 <style scoped>
@@ -37,7 +42,6 @@ export default {
 
 .absolute {
   display: none;
-  transform: translateX(-24px); /* align the navbar content to account button */
+  transform: translateX(100px); /* align the navbar content to account button */
 }
 </style>
-

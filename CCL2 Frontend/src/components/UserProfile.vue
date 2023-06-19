@@ -12,7 +12,11 @@
       </div>
       <div class="mb-4 text-xl flex justify-between items-center">
         <p><strong>Balance:</strong></p>
-        <p>{{ user.balance }}</p>
+        <p>{{ user.balance }}<img
+            src="/img/icons/coin.svg"
+            alt="Coin Icon"
+            class="inline-block mr-2"
+        /></p>
       </div>
       <div class="mb-4 flex justify-center">
         <router-link :to="`/user/${user.id}/deposit`" class="bg-ccl2-Light-Gold hover:bg-ccl2-Dark-Gold text-ccl2-Midnight-Blue font-bold py-2 px-4  focus:outline-none">DEPOSIT FUNDS</router-link>
