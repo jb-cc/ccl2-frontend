@@ -97,8 +97,9 @@ const buyItem = async () => {
   try {
     const buyingData = {
       buyerID: user.id,
-      sellerWeaponID: item.value.id,
+      sellerWeaponID: item.value.sellerWeaponID,
     };
+    console.log("Item. " + JSON.stringify(item.value));
     console.log(JSON.stringify(buyingData));
     await http.post(`http://localhost:8080/listings/buy/${buyingData.sellerWeaponID}`, buyingData);
     item.value.isSold = true;
