@@ -19,10 +19,10 @@
         /></p>
       </div>
       <div class="mb-4 flex justify-center">
-        <router-link :to="`/user/${user.id}/deposit`" class="bg-ccl2-Light-Gold hover:bg-ccl2-Dark-Gold text-ccl2-Midnight-Blue font-bold py-2 px-4  focus:outline-none">DEPOSIT FUNDS</router-link>
+        <router-link :to="`/profile/deposit`" class="bg-ccl2-Light-Gold hover:bg-ccl2-Dark-Gold text-ccl2-Midnight-Blue font-bold py-2 px-4  focus:outline-none">DEPOSIT FUNDS</router-link>
       </div>
       <div class="flex justify-center mt-10">
-        <router-link :to="`/user/${user.id}/edit`" class="bg-ccl2-White hover:bg-ccl2-Grey-Blue text-ccl2-Midnight-Blue font-bold py-2 px-4 focus:outline-none">SETTINGS AND PRIVACY</router-link>
+        <router-link :to="`/profile/edit`" class="bg-ccl2-White hover:bg-ccl2-Grey-Blue text-ccl2-Midnight-Blue font-bold py-2 px-4 focus:outline-none">SETTINGS AND PRIVACY</router-link>
       </div>
     </div>
   </div>

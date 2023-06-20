@@ -22,7 +22,9 @@
           type="number"
           v-model="price"
           placeholder="Enter price"
-          class="mt-4 inline-block w-1/6 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-White rounded-none shadow ripple hover:shadow-lg hover:bg-blue-50 focus:outline-none"
+          @input="validateAmount"
+          @keydown="restrictInput"
+          class="mt-4 inline-block w-1/6 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-White rounded-none shadow ripple hover:shadow-lg hover:bg-blue-50 focus:outline-none" min="0"
         />
         <button
           class="mt-4 inline-block w-1/2 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-ccl2-Dark-Gold focus:outline-none"
@@ -77,6 +79,22 @@ onMounted(async () => {
     console.error(err);
   }
 });
+
+const validateAmount = () => {
+  if (price.value < 0) {
+    price.value = 0;
+  }
+};
+
+const restrictInput = (event) => {
+  const key = event.key;
+  const isValidInput = /^[1-9\b]$/.test(key) || key === 'Backspace' || key === 'Delete' || key === 'ArrowLeft' || key === 'ArrowRight';
+
+  if (!isValidInput) {
+    event.preventDefault();
+  }
+};
+
 
 const listOnMarket = async () => {
   try {
