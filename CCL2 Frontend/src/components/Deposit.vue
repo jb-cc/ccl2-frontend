@@ -1,55 +1,58 @@
 <template>
-  <div class="flex flex-col items-center">
-    <h2 class="text-white text-2xl mb-4">Deposit funds into your account</h2>
-    <div class="flex flex-col items-center">
-      <button
-          @click="deposit(100)"
-          class="bg-white text-black border border-black px-4 py-2 mb-2"
-      >
-        Deposit
-        <img
-            src="/img/icons/coin.svg"
-            alt="Coin Icon"
-            class="inline-block mr-2"
-        />100
-      </button>
-      <button
-          @click="deposit(500)"
-          class="bg-white text-black border border-black px-4 py-2 mb-2"
-      >
-        Deposit
-        <img
-            src="/img/icons/coin.svg"
-            alt="Coin Icon"
-            class="inline-block mr-2"
-        />500
-      </button>
-      <button
-          @click="deposit(1000)"
-          class="bg-white text-black border border-black px-4 py-2 mb-2"
-      >
-        Deposit
-        <img
-            src="/img/icons/coin.svg"
-            alt="Coin Icon"
-            class="inline-block mr-2"
-        />1000
-      </button>
-      <div class="flex items-center">
-        <input
-            type="text"
-            v-model="customAmount"
-            placeholder="Enter custom amount"
-            class="bg-white text-black border border-black px-4 py-2 mr-2"
-            @input="validateAmount"
-            @keydown="restrictInput"
-        />
+  <div class="flex flex-col items-center justify-center min-h-screen">
+    <div class="shadow-lg shadow-ccl2-Light-Blue p-10 text-center text-white">
+      <h2 class="text-white font-Poppins text-3xl mb-6">Deposit funds into your account</h2>
+      <div class="flex flex-col items-center">
         <button
-            @click="deposit(customAmount)"
-            class="bg-white text-black border border-black px-4 py-2"
+            @click="deposit(100)"
+            class="bg-ccl2-Light-Gold font-Poppins text-ccl2-Midnight-Blue text-xl font-medium hover:bg-ccl2-Dark-Gold  px-6 py-3 mb-4 w-64"
         >
           Deposit
+          <img
+              src="/img/icons/coin.svg"
+              alt="Coin Icon"
+              class="inline-block mr-3"
+          />100
         </button>
+        <button
+            @click="deposit(500)"
+            class="bg-ccl2-Light-Gold font-Poppins text-ccl2-Midnight-Blue text-xl font-medium hover:bg-ccl2-Dark-Gold  px-6 py-3 mb-4 w-64"
+        >
+          Deposit
+          <img
+              src="/img/icons/coin.svg"
+              alt="Coin Icon"
+              class="inline-block mr-3"
+          />500
+        </button>
+        <button
+            @click="deposit(1000)"
+            class="bg-ccl2-Light-Gold font-Poppins text-ccl2-Midnight-Blue text-xl font-medium hover:bg-ccl2-Dark-Gold px-6 py-3 mb-4 w-64"
+        >
+          Deposit
+          <img
+              src="/img/icons/coin.svg"
+              alt="Coin Icon"
+              class="inline-block mr-3"
+          />1000
+        </button>
+        <div class="flex items-center w-64">
+          <input
+              type="text"
+              v-model="customAmount"
+              placeholder="Custom..."
+              class="bg-white text-ccl2-Midnight-Blue font-Poppins font-medium px-4 text-xl py-3 mr-3 w-28"
+              @input="validateAmount"
+              @keydown="restrictInput"
+          />
+          <button
+              @click="deposit(customAmount)"
+              class="bg-ccl2-Light-Gold font-Poppins text-ccl2-Midnight-Blue text-xl font-medium hover:bg-ccl2-Dark-Gold px-6 py-3 w-36"
+          >
+            Deposit
+          </button>
+        </div>
+
       </div>
     </div>
   </div>

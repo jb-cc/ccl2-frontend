@@ -2,30 +2,47 @@
   <div id="App" class="app-background">
     <header>
       <nav>
-        <NavbarLoggedIn v-if="user.isLoggedIn"/>
-        <NavbarDefault v-else/>
+        <NavbarLoggedIn v-if="user.isLoggedIn" />
+        <NavbarDefault v-else />
       </nav>
     </header>
-    <RouterView/>
+    <RouterView />
   </div>
 </template>
 
-
 <script setup>
-import { UserStore } from './stores/user'
-import NavbarDefault from './components/NavbarDefault.vue';
+import { UserStore } from "./stores/user";
+import NavbarDefault from "./components/NavbarDefault.vue";
 import NavbarLoggedIn from "@/components/NavbarLoggedIn.vue";
+import http from "./http-common";
+import { onMounted } from "vue";
 
-const user = UserStore()
+let user = UserStore();
+
+onMounted(async () => {
+  await checkIfLoggedIn();
+});
+const checkIfLoggedIn = async () => {
+  try {
+    const response = await http.get(`http://localhost:8080/me`);
+    if (response.data.user.id) {
+      user.user = response.data.user;
+      user.isLoggedIn = true;
+    } else {
+      console.error("[App.vue / checkIfLoggedIn]: No data in response.data.user.id, does the user exist?");
+    }
+
+  } catch (err) {
+    console.error(err);
+  }
+};
 </script>
-
 
 <style scoped>
 .app-background {
-  background-image: url('./assets/img/Background.svg');
+  background-image: url("./assets/img/Background.svg");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
 }
 </style>
-
