@@ -3,6 +3,12 @@ module.exports = {
     content: ['./src/**/*.{vue,js,ts,jsx,tsx, html}', './src/App.vue', './index.html'],
     theme: {
         extend: {
+            backgroundImage: {
+                'all-skins': "url('/img/landing/all-skins.png')",
+                'glock-18': "url('/img/landing/glockBG.svg')",
+                'usp': 'url(/img/landing/uspBG.svg)',
+            },
+
             colors: {
                 //Normal Opacity
                 'ccl2-Dark-Gold': 'rgba(195, 157, 89, 1)',

@@ -88,7 +88,7 @@ const validateAmount = () => {
 
 const restrictInput = (event) => {
   const key = event.key;
-  const isValidInput = /^[1-9\b]$/.test(key) || key === 'Backspace' || key === 'Delete' || key === 'ArrowLeft' || key === 'ArrowRight';
+  const isValidInput = /^[0-9\b]$/.test(key) || key === 'Backspace' || key === 'Delete' || key === 'ArrowLeft' || key === 'ArrowRight';
 
   if (!isValidInput) {
     event.preventDefault();

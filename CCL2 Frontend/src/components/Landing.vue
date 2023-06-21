@@ -1,25 +1,60 @@
 <template>
-  <div className="h-screen flex flex-col items-center justify-center pt-20 ">
-    <div className="text-center space-y-4 ">
-      <h1 className="text-[13vw] md:text-6xl lg:text-[12.75rem] leading-none font-Moondance text-ccl2-White">
-        Skinfinity</h1>
-      <h2 className="text-[3.4375rem] leading-none font-Poppins text-ccl2-Gold font-bold">CSGO trading and more</h2>
+  <div class="h-screen flex flex-col items-center justify-center pt-20 ">
+    <div class="text-center space-y-4 ">
+      <h1 class="text-[13vw] md:text-6xl lg:text-[12.75rem] leading-none font-Moondance text-ccl2-White">
+        Skinfinity
+      </h1>
+      <h2 class="text-[3.4375rem] leading-none font-Poppins text-ccl2-Gold font-bold">
+        CSGO trading and more
+      </h2>
     </div>
-    <div className="bg-ccl2-Dark-Blue-70 w-3/5 h-1/4 flex items-center justify-center flex-col space-y-4 mt-20 ">
-      <h3 className="text-4xl text-ccl2-White">The newest collections for the best prices</h3>
-      <router-link to="/listings" className="text-lg text-ccl2-White">SHOP NOW</router-link>
-    </div>
-    <div className="flex w-3/5 justify-between space-x-3">
-      <div className="bg-ccl2-Light-Blue-40 w-1/2 h-80 flex items-center justify-center text-ccl2-White">
-        <router-link to="/listings/team/CT">CT-SIDE WEAPONS</router-link>
+    <div class="w-3/5 grid grid-cols-12 gap-4 mt-20">
+      <div id="allWeapons"
+           class="col-span-12 h-64 bg-ccl2-Dark-Blue-70 flex flex-col items-center justify-center text-ccl2-White space-y-4 relative"
+      >
+        <h3 class="text-4xl absolute font-light font-Poppins top-8 left-8">The newest collections for the best prices</h3>
+        <router-link to="/listings" class="text-lg bg-white/70 text-black rounded-none px-8 py-2 font-semibold font-Poppins absolute bottom-8 right-32">SHOP NOW</router-link>
       </div>
-      <div className="bg-ccl2-Light-Red-40 w-1/2 h-80 flex items-center justify-center text-ccl2-White">
-        <router-link to="/listings/team/T">T-SIDE WEAPONS</router-link>
+      <div id="usp"
+           class="bg-ccl2-Light-Blue-40 col-span-6 h-64 flex flex-col items-center justify-center text-ccl2-White space-y-4 relative"
+      >
+        <router-link to="/listings/team/CT" class="text-lg bg-white/70 font-Poppins font-semibold text-black rounded-none px-4 py-2 absolute bottom-8 right-24">CT-SIDE WEAPONS</router-link>
+      </div>
+      <div id="glock18"
+           class="bg-ccl2-Light-Red-40 col-span-6 h-64 flex flex-col items-center justify-center text-ccl2-White space-y-4 relative"
+      >
+        <router-link to="/listings/team/T" class="text-lg bg-white/70 text-black font-semibold font-Poppins rounded-none px-4 py-2 absolute bottom-8 left-24">T-SIDE WEAPONS</router-link>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
 
+
+<script setup>
 </script>
+
+<style scoped>
+  #allWeapons {
+    background-image: url("/img/landing/all.png");
+    background-repeat: no-repeat;
+    background-position: left top, right top, center bottom;
+    background-size: cover  ;
+    background-position-y: top;
+  }
+
+  #glock18 {
+    background-image: url("/img/landing/glock18BG.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  #usp {
+    background-image: url("/img/landing/uspBG.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+</style>
+

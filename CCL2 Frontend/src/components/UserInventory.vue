@@ -1,22 +1,24 @@
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen py-2">
-    <h1 class="text-7xl text-center mb-20 font-Moondance text-ccl2-White">
-      Your Inventory
-    </h1>
+    <div class="backdrop-blur-sm bg-ccl2-Midnight-Blue/100 w-3/5 h-40 sticky top-0 pt-20 z-10">
+      <h1 class="text-7xl text-center mb-20 font-Moondance text-ccl2-White sticky top-20">
+        Your Inventory
+      </h1>
+    </div>
     <div v-if="isLoading" class="text-white font-Poppins">
       Loading items...
     </div>
-    <div v-else-if="items.length" class="w-3/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+    <div v-else-if="items.length" class="w-3/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4"
+    >
       <div
           v-for="item in items"
           :key="item.userWeaponID"
-          class="flex flex-col bg-ccl2-Dark-Blue shadow-md hover:shadow-xl cursor-pointer"
+          class="flex flex-col bg-ccl2-Dark-Blue shadow-md hover:shadow-xl"
           @click="navigateToItem(item)"
       >
-        <img :src="getImage(item)" alt="Item Image" class="w-full h-auto object-contain" />
+        <img :src="getImage(item)" alt="Skin Image" class="w-full h-auto object-contain"/>
         <div class="p-2 text-center flex-grow">
           <h2 class="font-regular font-Poppins mb-2 text-ccl2-White">{{ item.name }}</h2>
-          <p class="font-regular font-Poppins mb-2 text-ccl2-White">{{ item.rarity }}</p>
         </div>
         <router-link
             :to="`/inventory/${item.userWeaponID}/sell`"
@@ -32,11 +34,12 @@
   </div>
 </template>
 
+
 <script>
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 import http from "../http-common";
-import { UserStore } from '@/stores/user';
-import { useRouter } from 'vue-router';
+import {UserStore} from '@/stores/user';
+import {useRouter} from 'vue-router';
 
 export default {
   setup() {
@@ -71,3 +74,4 @@ export default {
   },
 }
 </script>
+
