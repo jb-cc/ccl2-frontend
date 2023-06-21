@@ -1,7 +1,7 @@
 <template>
   <div v-if="user" class="flex flex-col items-center justify-center min-h-screen p-6">
     <h1 class="text-2xl font-bold mb-6 text-center font-Moondance text-6xl text-white">{{ user.username }}</h1>
-    <div class="bg-transparent shadow-none px-16 py-10 mb-4 text-white font-Poppins w-1/3">
+    <div class="bg-transparent shadow-lg shadow-ccl2-Light-Blue px-16 py-10 mb-4 text-white font-Poppins w-1/3">
       <div class="mb-4 flex text-xl justify-between">
         <p class><strong>Username:</strong></p>
         <p>{{ user.username }}</p>

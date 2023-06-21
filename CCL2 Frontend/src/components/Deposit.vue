@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen">
     <div class="shadow-lg shadow-ccl2-Light-Blue p-10 text-center text-white">
-      <h2 class="text-white font-Poppins text-3xl mb-6">Deposit funds into your account</h2>
+      <h2 class="text-white font-Moondance text-3xl mb-6">Deposit funds into your account</h2>
       <div class="flex flex-col items-center">
         <button
             @click="deposit(100)"

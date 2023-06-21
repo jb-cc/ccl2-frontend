@@ -25,9 +25,9 @@
           SELL
         </button>
       </div>
-      <div v-else class="text-center" v-if="!item.isListed">
+      <div v-else class="text-center" >
         <button
-            class="mt-4 inline-block w-1/2 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-ccl2-Dark-Gold focus:outline-none"
+            class="mt-4 inline-block w-1/2 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Midnight-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple focus:outline-none"
 
         >
           ITEM ON MARKET

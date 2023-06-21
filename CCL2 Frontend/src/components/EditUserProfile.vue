@@ -6,7 +6,7 @@
       Edit Profile
     </h1>
     <div
-      class="bg-transparent shadow-none px-16 py-10 mb-4 text-white font-Poppins w-1/3"
+      class="bg-transparent shadow-lg shadow-ccl2-Light-Blue px-16 py-10 mb-4 text-white font-Poppins w-1/3"
     >
       <div class="mb-4 text-xl">
         <label class="flex justify-between">
@@ -104,6 +104,8 @@
           </p>
         </label>
       </div>
+      <div v-if="deleteError" class="mb-4 flex justify-center text-lg" ><p class="text-ccl2-Red">{{ deleteError }}</p></div>
+      <div v-if="deleteSuccess" class="mb-4 flex justify-center text-lg" ><p class="text-green-500">{{ deleteSuccess }}</p></div>
       <div class="flex justify-center">
         <button
           @click="deleteAccount"
@@ -122,6 +124,7 @@
 import { computed, ref } from "vue";
 import http from "../http-common";
 import { UserStore } from "@/stores/user";
+import router from "@/routes/router";
 
 const user = UserStore().user;
 const username = ref("");
@@ -136,6 +139,8 @@ const deletePassword = ref("");
 const acceptDelete = ref(false);
 const saveError = ref(null);
 const saveSuccess = ref(null);
+const deleteError = ref(null);
+const deleteSuccess = ref(null);
 
 const saveChanges = () => {
   if (!passwordsMatch.value) {
@@ -150,13 +155,15 @@ const saveChanges = () => {
       oldPassword: oldPassword.value,
       newPassword: newPassword.value,
     })
-    .then((response) => {
+    .then(async (response) => {
       console.log(response);
       saveError.value = null;
       saveSuccess.value = response.data.message;
       console.log("saveSuccess: " + saveSuccess.value);
       user.username = username.value;
       user.email = email.value;
+      await router.push('/profile')
+
     })
     .catch((error) => {
       if (error.response) {
@@ -172,6 +179,37 @@ const saveChanges = () => {
 };
 
 const deleteAccount = () => {
-  // delete account
+  if (!acceptDelete.value) {
+    deleteError.value = "To delete your account, you must accept the terms.";
+    return;
+  }
+  const response = http
+    .delete(`http://localhost:8080/users/${user.id}/delete`, {
+      data: {
+        id: user.id,
+        password: deletePassword.value,
+      },
+    })
+    .then((response) => {
+      console.log(response.data.message);
+      deleteSuccess.value = response.data.message;
+      user.id = null;
+      user.username = null;
+      user.email = null;
+      user.balance = null;
+      UserStore().isLoggedIn = false;
+      router.push("/");
+    })
+    .catch((error) => {
+      if (error.response) {
+        deleteError.value = error.response.data.message;
+        console.log('saveError: ', saveError.value)
+      }
+      else {
+        deleteError.value = error.message;
+        console.log('saveError: ', saveError.value);
+      }
+
+    });
 };
 </script>

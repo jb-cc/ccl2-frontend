@@ -28,12 +28,13 @@ const checkIfLoggedIn = async () => {
     if (response.data.user.id) {
       user.user = response.data.user;
       user.isLoggedIn = true;
+      console.log("[App.vue / checkIfLoggedIn]: user: ", user.user);
     } else {
       console.error("[App.vue / checkIfLoggedIn]: No data in response.data.user.id, does the user exist?");
     }
 
   } catch (err) {
-    console.error(err);
+    console.error("[App.vue / checkIfLoggedIn]: ", err.response.data.message);
   }
 };
 </script>
