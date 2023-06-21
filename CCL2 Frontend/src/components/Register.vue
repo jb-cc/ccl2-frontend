@@ -67,6 +67,8 @@
             Sign Up
           </button>
         </div>
+        <p class="mt-2 text-center text-ccl2-Red">{{ errorMessage }}</p>
+
       </form>
     </div>
   </div>
@@ -82,6 +84,7 @@ import { useRouter } from 'vue-router'
 const username = ref('')
 const email = ref('')
 const password = ref('')
+const errorMessage = ref('') // New variable for error message
 
 // define router
 const router = useRouter()
@@ -102,10 +105,12 @@ const submitForm = async () => {
 
     // If user registration is successful, navigate to the user page.
     if (response.data.token) {
+      errorMessage.value = '' // Clear the error message
       await router.push({path: `/profile`})
     }
   } catch (e) {
     console.log('[Register.vue / submitForm] error response: ' + JSON.stringify(e.response))
+    errorMessage.value = e.response.data.message // Update the error message
   }
 }
 

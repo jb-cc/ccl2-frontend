@@ -52,6 +52,11 @@
             Log In
           </button>
         </div>
+        <div v-if="error" class="mb-4 flex justify-center text-lg">
+          <p class="text-ccl2-Red">
+            {{ error }}
+          </p>
+        </div>
       </form>
     </div>
   </div>
@@ -70,14 +75,24 @@ const user = UserStore();
 const router = useRouter();
 const username = ref("");
 const password = ref("");
+const error = ref("");
 
 const submitForm = async () => {
-  await user.logIn({ username: username.value, password: password.value });
-  if (user.isLoggedIn) {
+  try {
+    await user.logIn({ username: username.value, password: password.value });
     console.log("[Login.vue / submitForm] user from Userstore: " + JSON.stringify(user));
     await router.push({ path: `/profile` });
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.message) {
+      error.value = err.response.data.message;
+      console.log("Server response: " + err.response.data.message);
+    } else {
+      error.value = err.message;
+      console.log("An error occurred: " + err.message);
+    }
   }
 };
+
 
 const navigateToRegister = () => {
   router.push({ path: '/register' });

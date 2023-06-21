@@ -19,10 +19,11 @@ export const UserStore = defineStore('user', {
 
                 if (response.data.token) {
                     this.isLoggedIn = true;
-                    this.user = response.data.user; // Store user data
+                    this.user = response.data.user;
                 }
             } catch (error) {
                 console.error(error);
+                throw error; // to display it in the UI
             }
         },
         async logOut() {
@@ -52,7 +53,9 @@ export const UserStore = defineStore('user', {
                 return response;
             } catch (error) {
                 console.error(error);
+                throw error; // Re-throw the error after logging it
             }
         }
+
     }
 })

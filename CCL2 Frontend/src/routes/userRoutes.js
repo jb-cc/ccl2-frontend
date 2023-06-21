@@ -7,7 +7,7 @@ const routes = [    // you can't access anything in here if not logged in
     {
         // node.js: wenn hier eine DELETE request kommt, dann wird der user gelöscht
         // node.js: wenn hier eine PUT request kommt, dann wird der user geupdated
-        path: '/profile/edit',
+        path: '/settings',
         name: 'Edit User Profile',
         component: () => import('../components/EditUserProfile.vue')
 
