@@ -44,6 +44,8 @@ const checkIfLoggedIn = async () => {
   background-image: url("./assets/img/Background.svg");
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  background-attachment: fixed;
+  height: 100vh;
+  overflow-y: auto;
 }
 </style>

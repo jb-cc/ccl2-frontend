@@ -35,7 +35,7 @@
         </button>
       </div>
       <div v-if="!UserStore().isLoggedIn" class="text-center">
-        <button
+        <button @click = "router.push('/login')"
             class="mt-4 inline-block w-1/2 px-6 py-2 font-semibold font-Poppins leading-6 text-center text-ccl2-Night-Blue uppercase transition bg-ccl2-Light-Gold rounded-none shadow ripple hover:shadow-lg hover:bg-blue-800 focus:outline-none"
 
         >
@@ -55,6 +55,8 @@ import { useRoute } from "vue-router";
 import http from "../http-common";
 import { UserStore } from "@/stores/user";
 import router from "@/routes/router";
+
+
 
 const item = ref({});
 const route = useRoute();
@@ -111,3 +113,6 @@ const buyItem = async () => {
   }
 };
 </script>
+
+
+

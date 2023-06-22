@@ -1,10 +1,10 @@
 <template>
   <div class="h-screen flex flex-col items-center justify-center pt-20 ">
-    <div class="text-center space-y-4 ">
-      <h1 class="text-[13vw] md:text-6xl lg:text-[12.75rem] leading-none font-Moondance text-ccl2-White">
+    <div class="mt-48 text-center space-y-4 ">
+      <h1 id="headline1" class=" font-Moondance text-ccl2-White">
         Skinfinity
       </h1>
-      <h2 class="text-[3.4375rem] leading-none font-Poppins text-ccl2-Gold font-bold">
+      <h2 id="headline2" class="font-Poppins text-ccl2-Gold font-semibold">
         CSGO trading and more
       </h2>
     </div>
@@ -35,6 +35,16 @@
 </script>
 
 <style scoped>
+  #headline1 {
+    font-size: 12rem;
+    line-height: 1;
+  }
+
+  #headline2 {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
   #allWeapons {
     background-image: url("/img/landing/all.png");
     background-repeat: no-repeat;
