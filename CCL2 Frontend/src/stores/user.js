@@ -47,7 +47,7 @@ export const UserStore = defineStore('user', {
                 if (response.data.token) {
                     this.isLoggedIn = true;
                     this.user = response.data.user; // Store registered user data
-                    console.log('[user.js / register function] response.data.user: ' + response.data.user)
+                    console.log('[user.js / register function] response.data.user: ' +JSON.stringify(response.data.user) )
                 }
 
                 return response;

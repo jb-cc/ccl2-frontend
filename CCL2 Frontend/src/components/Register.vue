@@ -59,7 +59,7 @@
           />
         </div>
         <div class="flex items-center justify-between">
-          <button
+          <button :disabled="buttonDisabled"
               @click="submitForm"
               class="w-full bg-ccl2-Light-Gold hover:bg-ccl2-Dark-Gold text-ccl2-Midnight-Blue font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
               type="submit"
@@ -80,21 +80,21 @@ import { ref } from 'vue'
 import { UserStore } from '@/stores/user'
 import { useRouter } from 'vue-router'
 
-// define reactive data
+const router = useRouter()
+const userStore = UserStore()
+
+
 const username = ref('')
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('') // New variable for error message
+const buttonDisabled = ref(false)
 
-// define router
-const router = useRouter()
 
-// define store
-const userStore = UserStore()
-
-// define methods
 const submitForm = async () => {
   try {
+    buttonDisabled.value = true
+    console.log('Button disabled: ' + buttonDisabled.value)
     const response = await userStore.register({
       username: username.value,
       email: email.value,
@@ -109,6 +109,8 @@ const submitForm = async () => {
       await router.push({path: `/profile`})
     }
   } catch (e) {
+    buttonDisabled.value = false
+    console.log('Button disabled: ' + buttonDisabled.value)
     console.log('[Register.vue / submitForm] error response: ' + JSON.stringify(e.response))
     errorMessage.value = e.response.data.message // Update the error message
   }
