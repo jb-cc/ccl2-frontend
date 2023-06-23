@@ -29,13 +29,19 @@
 </template>
 
 <script setup>
+
+// necessary imports
 import {UserStore} from '@/stores/user'
 import {ref, onMounted} from 'vue'
 import {useRouter} from 'vue-router'
 
+
+// variables, router / user setup
 const userStore = UserStore()
 const user = ref(userStore.user)
 const router = useRouter()
+
+// on mount, check if user in store is null, if so, redirect to login
 
 onMounted(async () => {
   if (!user.value) {

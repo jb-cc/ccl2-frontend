@@ -1,3 +1,6 @@
+// routes for everything that is related to the user
+
+
 const routes = [    // you can't access anything in here if not logged in
     {
         path: '/profile',

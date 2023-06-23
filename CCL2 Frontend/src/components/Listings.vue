@@ -57,10 +57,17 @@
   </div>
 </template>
 
-<script> // TODO: refactor to use composition api
+<script>
+
+// i still want to refactor this to the composition api but idk mens, maybe when I have time :))
+
+
+
 import http from "../http-common";
 
 export default {
+
+  // variables for the component
   data() {
     return {
       items: [],
@@ -69,6 +76,8 @@ export default {
     };
   },
   created() {
+
+    // fetches the items from the backend and displays them. If the route has a team parameter, it will only display the items of that team. if not, it will display all items.
     const team = this.$route.params.team;
     const fetchItems = (path) => {
       http
@@ -77,11 +86,15 @@ export default {
             console.log(response.data);
             this.items = response.data;
           })
+
+          // if there is an error, it will be displayed in the FetchingError variable on the page
           .catch((e) => {
             this.FetchingError = e.message;
             console.log(e);
           });
     };
+
+    // changes the headline depending on the route
     if (team) {
       this.headline = `${team}-SIDE WEAPONS`;
       fetchItems(`http://localhost:8080/listings/${team}`);
@@ -92,6 +105,8 @@ export default {
   },
 
   methods: {
+
+    // sets the image path for the items
     getImage(item) {
       return `/img/skins/${item.image}.png`;
     },

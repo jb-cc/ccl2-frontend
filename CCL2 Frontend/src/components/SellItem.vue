@@ -48,17 +48,23 @@
 </template>
 
 <script setup>
+
+// neccessary imports
 import { ref, onMounted } from "vue";
 import { UserStore } from "@/stores/user";
 import {useRoute, useRouter} from "vue-router";
 import http from "../http-common";
 
+
+// reactive variables and router / store setup
 const item = ref({});
 const price = ref(null);
 const userStore = UserStore();
 const router = useRouter();
 const route = useRoute();
 
+
+// get skin information from backend, if successful, set item.value to the response data
 onMounted(async () => {
   const userWeaponID = route.params.item;
   try {
@@ -80,11 +86,16 @@ onMounted(async () => {
   }
 });
 
+
+// validate price input, if price is negative, set price to 0
 const validateAmount = () => {
   if (price.value < 0) {
     price.value = 0;
   }
 };
+
+
+// restrict input to numbers only and backspace, delete, arrow left and arrow right
 
 const restrictInput = (event) => {
   const key = event.key;
@@ -96,6 +107,7 @@ const restrictInput = (event) => {
 };
 
 
+// list item on market, if successful, set item.isListed to true (used to display different button)
 const listOnMarket = async () => {
   try {
     const listingData = {

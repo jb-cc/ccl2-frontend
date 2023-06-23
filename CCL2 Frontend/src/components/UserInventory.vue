@@ -36,24 +36,32 @@
 
 
 <script>
+
+// necessary imports
 import {ref, onMounted} from 'vue';
 import http from "../http-common";
 import {UserStore} from '@/stores/user';
 import {useRouter} from 'vue-router';
 
 export default {
+
+  // necessary variables and store / router setup
   setup() {
     const router = useRouter();
     const userStore = UserStore();
     const user = userStore.user;
     const items = ref([]);
     const isLoading = ref(true);
+
+    // get image of item
     const getImage = (item) => `/img/skins/${item.image}.png`;
 
+    // navigate to item on click of item
     const navigateToItem = (item) => {
       router.push(`/inventory/${item.userWeaponID}`);
     };
 
+    // get items from inventory
     onMounted(async () => {
       try {
         const response = await http.get(`http://localhost:8080/inventory/user/${parseInt(user.id)}`);

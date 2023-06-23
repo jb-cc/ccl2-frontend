@@ -1,3 +1,6 @@
+<!--Here, the user can edit their profile-->
+
+
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen p-6">
     <h1
@@ -121,20 +124,29 @@
 </template>
 
 <script setup>
+
+
+// neccessary imports
 import { computed, ref } from "vue";
 import http from "../http-common";
 import { UserStore } from "@/stores/user";
 import router from "@/routes/router";
 
+
+// initializations from the store and the inputs
 const user = UserStore().user;
 const username = ref("");
 const email = ref("");
 const oldPassword = ref("");
 const newPassword = ref("");
 const repeatPassword = ref("");
+
+// check if the passwords match, if not, it throws an error
 const passwordsMatch = computed(
   () => newPassword.value === repeatPassword.value
 ); // null if passwords don't match
+
+// more initializations
 const deletePassword = ref("");
 const acceptDelete = ref(false);
 const saveError = ref(null);
@@ -142,12 +154,18 @@ const saveSuccess = ref(null);
 const deleteError = ref(null);
 const deleteSuccess = ref(null);
 
+
+// function to save the changes to the database
 const saveChanges = () => {
+
+  // check if the passwords match
   if (!passwordsMatch.value) {
     console.error("New password and repeated password do not match!");
     return;
   }
   console.log("user: " + JSON.stringify(user));
+
+  // send the update to the backend with the new data
   const response = http
     .put(`http://localhost:8080/users/${user.id}/edit`, {
       newUsername: username.value,
@@ -155,6 +173,8 @@ const saveChanges = () => {
       oldPassword: oldPassword.value,
       newPassword: newPassword.value,
     })
+
+      // if the response is successful, the user is redirected to the profile page, and the new data is saved in the store
     .then(async (response) => {
       console.log(response);
       saveError.value = null;
@@ -165,8 +185,11 @@ const saveChanges = () => {
       await router.push('/profile')
 
     })
-    .catch((error) => {
+
+      // if the response is not successful, the error is saved in the saveError variable which is displayed on the page
+      .catch((error) => {
       if (error.response) {
+
         saveError.value = error.response.data.message;
         console.log('saveError: ', saveError.value)
       }
@@ -178,11 +201,19 @@ const saveChanges = () => {
     });
 };
 
+
+
+// function to delete the account
 const deleteAccount = () => {
+
+  // check if the user accepted the terms
   if (!acceptDelete.value) {
     deleteError.value = "To delete your account, you must accept the terms.";
     return;
   }
+
+
+  // send the delete request to the backend
   const response = http
     .delete(`http://localhost:8080/users/${user.id}/delete`, {
       data: {
@@ -190,6 +221,8 @@ const deleteAccount = () => {
         password: deletePassword.value,
       },
     })
+
+      // if the response is successful, the backend clears the cookies, the user is logged out, and the user data is deleted from the store, and the user is redirected to the home page
     .then((response) => {
       console.log(response.data.message);
       deleteSuccess.value = response.data.message;
@@ -200,6 +233,8 @@ const deleteAccount = () => {
       UserStore().isLoggedIn = false;
       router.push("/");
     })
+
+      // if the response is not successful, the error is saved in the deleteError variable which is displayed on the page
     .catch((error) => {
       if (error.response) {
         deleteError.value = error.response.data.message;

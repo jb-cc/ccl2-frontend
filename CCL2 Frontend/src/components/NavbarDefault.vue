@@ -19,6 +19,9 @@
 </template>
 
 <script>
+
+// default navbar for all pages if user is not logged in
+
 export default {
   name: 'NavbarDefault'
   // Any other options/data/methods you want to define for this component

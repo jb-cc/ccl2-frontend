@@ -16,11 +16,6 @@ const routes = [
         name: 'Listing',
         component: () => import('../components/Listing.vue')    // shows a listing with all the info, and link to buy
     },
-    {
-        path: '/listings/item/:item/buy',   // you can't do this when not logged in
-        name: 'Buy skin',
-        component: () => import('../components/Buy.vue')
-    },
 ]
 
 export default routes

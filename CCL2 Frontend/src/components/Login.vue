@@ -67,18 +67,27 @@
 
 
 <script setup>
+
+// necessary imports
 import { UserStore } from "@/stores/user";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
+
+// variables for login and error handling, as well as router and userstore
 const user = UserStore();
 const router = useRouter();
 const username = ref("");
 const password = ref("");
 const error = ref("");
 
+
+// function to submit the login form, gets called when login button is clicked
 const submitForm = async () => {
   try {
+
+    // send login request to backend and navigate to profile page if successful
+    // otherwise display error message
     await user.logIn({ username: username.value, password: password.value });
     console.log("[Login.vue / submitForm] user from Userstore: " + JSON.stringify(user));
     await router.push({ path: `/profile` });
@@ -94,6 +103,7 @@ const submitForm = async () => {
 };
 
 
+// function to navigate to register page, called when register button is clicked
 const navigateToRegister = () => {
   router.push({ path: '/register' });
 };

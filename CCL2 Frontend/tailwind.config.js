@@ -3,6 +3,8 @@ module.exports = {
     content: ['./src/**/*.{vue,js,ts,jsx,tsx, html}', './src/App.vue', './index.html'],
     theme: {
         extend: {
+
+            // setting up the custom fonts, background images and colors
             backgroundImage: {
                 'all-skins': "url('/img/landing/all-skins.png')",
                 'glock-18': "url('/img/landing/glockBG.svg')",

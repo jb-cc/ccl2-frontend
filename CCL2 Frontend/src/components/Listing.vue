@@ -50,6 +50,8 @@
 </template>
 
 <script setup>
+
+// necessary imports
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import http from "../http-common";
@@ -57,11 +59,12 @@ import { UserStore } from "@/stores/user";
 import router from "@/routes/router";
 
 
-
+// initializing the item, route and user store
 const item = ref({});
 const route = useRoute();
 const user = UserStore().user;
 
+// on page load, fetch the item from the database using the route parameter, which is the item id. Then, display the item.
 onMounted(async () => {
 
   const sellerWeaponID = route.params.item;
@@ -89,6 +92,8 @@ onMounted(async () => {
   }
 });
 
+
+// get the image of the item which then is displayed in the template
 const getImage = (item) => {
   if (item && item.image) {
     return `/img/skins/${item.image}.png`;
@@ -96,6 +101,8 @@ const getImage = (item) => {
   return ""; // return an empty string if item or item.image is not defined
 };
 
+
+// send a request to the backend to buy the item. If the request is successful, update the user balance and redirect to the inventory page.
 const buyItem = async () => {
   try {
     const buyingData = {

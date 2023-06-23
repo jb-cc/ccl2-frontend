@@ -31,6 +31,12 @@
 </template>
 
 <script setup>
+
+
+// navbar for all pages if user is logged in
+
+
+// need to import the user store to get the user's balance and to check if they are logged in
 import { UserStore } from '@/stores/user'
 
 const user = UserStore()

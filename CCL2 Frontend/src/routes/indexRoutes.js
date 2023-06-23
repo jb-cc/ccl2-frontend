@@ -1,4 +1,4 @@
-// routes from the index (landing Page)
+// routes for the index (landing Page)
 
 const routes = [
     {

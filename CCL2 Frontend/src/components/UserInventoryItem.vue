@@ -43,13 +43,18 @@
 
 
 <script setup>
+
+// neccessary imports
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import http from "../http-common";
 
+// variables, router setup
 const route = useRoute();
 const router = useRouter();
 const item = ref({});
+
+// on load, get item from inventory
 
 onMounted(async () => {
   const userWeaponID = route.params.item;
@@ -66,6 +71,9 @@ onMounted(async () => {
     console.error(err);
   }
 });
+
+
+// reroute to sell page
 
 const sellItem = () => {
   if(item.value && item.value.id) {
