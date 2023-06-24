@@ -1,4 +1,4 @@
-# SKINFINITY CS:GO SkinMarketplace - Backend (CCL2)
+# SKINFINITY CS:GO SkinMarketplace - Frontend (CCL2)
 
 Skinfinity is a CS:GO Skin marketplace that allows users to buy and sell (not real) CS:GO Skins. It is a project for the final project (Creative Code Lab) of the second semester of the Bachelor's degree program "Creative Computing" at the St. Pölten University of Applied Sciences.
 
