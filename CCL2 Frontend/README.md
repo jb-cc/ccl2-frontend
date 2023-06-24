@@ -53,7 +53,10 @@ npm install
 ```
 again.
 
-These are the dependencies:
+
+These are the dependencies for the backend:
+
+```
 "dependencies": {
 "bcrypt": "^5.1.0",
 "body-parser": "^1.20.2",
@@ -65,6 +68,21 @@ These are the dependencies:
 "jsonwebtoken": "^9.0.0",
 "mysql": "^2.18.1"
 }
+```
+
+These are the dependencies for the frontend:
+
+```
+"dependencies": {
+    "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
+    "pinia": "^2.1.4",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.2"
+ }
+```
 
 
 Then, to start the backend, run 
