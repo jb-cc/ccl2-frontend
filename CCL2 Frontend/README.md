@@ -12,6 +12,8 @@ https://git.nwt.fhstp.ac.at/cc221012/ccl2frontend
 There are three parts to this Project, the Frontend, the Backend, and the database. You need all of them to run this app.
 You need Node.js on your system to run this web application. You also need a MySQL database, as well as an IDE that can edit JavaScript.
 
+
+
 To install the dependencies, open the root folder of both Backend and Frontend in your IDE, and run
 
 ```bash
@@ -30,6 +32,8 @@ ACCESS_TOKEN_SECRET=secret
 ```
 
 replace the values with your database credentials, and create a new secret
+
+Currently, you can get the database schema by contacting me, until I upload it here in the near future.
 
 In the version you clone from git (or download from the ecampus), the ports and urls are set to http://localhost:8081/ (this is where the frontend is running) and http://localhost:8080/ (for the backend).
 If you want to change this, run a replace all in your frontend, and replace http://localhost:8080/ with the desired backend url. In the Backend, you have to navigate to the server.js file, and change the origin to your new frontend adress
